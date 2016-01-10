@@ -1,0 +1,6 @@
+name "pong"
+description "A simple Pong game"
+copyright "Copyright © 2016, zachary"
+authors "Zachary"
+lflags "-L../dsfml-lib/lib"
+dependency "dsfml" version="2.1.0"
