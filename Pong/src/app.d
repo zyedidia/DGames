@@ -39,6 +39,16 @@ void main(string[] args) {
 
     Ball b = new Ball(uniform(BALL_MIN, BALL_MAX), uniform(0, 360f), [p1, p2]);
 
+    RectangleShape[] dashedLine;
+
+    for (int i = 0; i < SCREEN_HEIGHT / (20 * Y_SCALE); i++) {
+        RectangleShape shape = new RectangleShape(Vector2f(5 * X_SCALE, 20 * Y_SCALE));
+        shape.origin = Vector2f(shape.size.x / 2, shape.size.y / 2);
+        shape.position = Vector2f(SCREEN_WIDTH / 2, i * (SCREEN_HEIGHT / (30 * Y_SCALE)));
+        shape.fillColor = Color.White;
+        dashedLine ~= shape;
+    }
+
     while (window.isOpen()) {
         Event event;
 
@@ -59,6 +69,10 @@ void main(string[] args) {
         p1.draw(window);
         p2.draw(window);
         b.draw(window);
+
+        foreach (RectangleShape l; dashedLine) {
+            window.draw(l);
+        }
 
         window.draw(scoreText1);
         window.draw(scoreText2);
